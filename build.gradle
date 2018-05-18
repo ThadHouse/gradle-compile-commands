@@ -12,6 +12,17 @@ compileJava {
     targetCompatibility = 1.8
 }
 
+repositories {
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+    mavenLocal()
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.2.4'
+}
+
 publishing {
     publications {
         plugin(MavenPublication) {
@@ -32,7 +43,7 @@ pluginBundle {
     tags = ['groovy', 'jni', 'utils', 'maven', 'frc', 'wpilib']
 
     plugins {
-        GradleJni {
+        GradleCompileCommands {
             id = 'edu.wpi.first.GradleCompileCommands'
             displayName = 'Gradle CompileCommands'
         }
@@ -41,7 +52,7 @@ pluginBundle {
 
 gradlePlugin {
     plugins {
-        GradleJni {
+        GradleCompileCommands {
             id = 'edu.wpi.first.GradleCompileCommands'
             implementationClass = 'edu.wpi.first.compile.GradleCompileCommands'
         }
